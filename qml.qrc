@@ -12,7 +12,5 @@
         <file>ajuda.png</file>
         <file>outros.png</file>
     </qresource>
-    <qresource prefix="/Templates">
-        <file>Camera.qml</file>
-    </qresource>
+    <qresource prefix="/Templates"/>
 </RCC>

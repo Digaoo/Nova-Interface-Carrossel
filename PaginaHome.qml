@@ -13,6 +13,8 @@ GridLayout {
     rows: 3
     columns: 2
 
+    property var instanciaCamera: camera
+
     ComboBox {
 
         id: escolheCamera

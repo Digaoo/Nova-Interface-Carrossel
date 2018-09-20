@@ -10,6 +10,8 @@ ScrollView{
     id: layoutConfig
     anchors.fill: parent
 
+    property var instanciaCamera: null
+
     ColumnLayout {
 
         anchors.fill: parent
@@ -181,7 +183,7 @@ ScrollView{
         */
         Frame {
 
-            visible: true
+            visible: false
 
             id:frameGravacaoBuffer
             width: layoutConfig.width
@@ -221,12 +223,126 @@ ScrollView{
                     id: ligaGravacaoBuffer
                     text: qsTr('Gravar em Buffer')
 
+                    anchors.horizontalCenter: parent.horizontalCenter
+
                     property bool gravando: false
 
                     onClicked: {
 
                         gravando = !gravando
                     }
+                }
+            }
+        }
+
+        /**
+
+          Frame de captura do campo vazio - "Deprecated"
+        */
+        Frame {
+
+            visible: false
+
+            id:frameCapturaCampoVazio
+            width: layoutConfig.width
+            height: children.height*1.2
+
+            Layout.preferredWidth: layoutConfig.width - 10
+            Layout.preferredHeight:  children.height*1.2
+            Layout.margins: 5
+
+            topPadding: 0
+            leftPadding: 0
+            rightPadding: 0
+
+            ColumnLayout {
+
+                width: frameCapturaCampoVazio.width
+                height: children.height
+                spacing: 10
+
+                Label {
+
+                    text: qsTr('<b>Gravação em Buffer</b>')
+                    font.pixelSize: 18
+                    padding: 10
+                    color: "white"
+                    anchors.top: parent.top
+
+                    background: Rectangle {
+
+                        color: "#2A2A2A"
+                        width: frameCapturaCampoVazio.width
+                    }
+                }
+
+                Button {
+
+                        id: botaoCaptura
+                        text: qsTr("Capturar")
+
+                        anchors.horizontalCenter: parent.horizontalCenter
+                }
+            }
+        }
+
+        /**
+
+          Frame de taxa de uso do campo vazio - "Deprecated"
+        */
+        Frame {
+
+            visible: false
+
+            id:frameTaxaCampoVazio
+            width: layoutConfig.width
+            height: children.height*1.2
+
+            Layout.preferredWidth: layoutConfig.width - 10
+            Layout.preferredHeight:  children.height*1.2
+            Layout.margins: 5
+
+            topPadding: 0
+            leftPadding: 0
+            rightPadding: 0
+
+            ColumnLayout {
+
+                width: frameTaxaCampoVazio.width
+                height: children.height
+                spacing: 10
+
+                Label {
+
+                    text: qsTr('<b>Gravação em Buffer</b>')
+                    font.pixelSize: 18
+                    padding: 10
+                    color: "white"
+                    anchors.top: parent.top
+
+                    background: Rectangle {
+
+                        color: "#2A2A2A"
+                        width: frameTaxaCampoVazio.width
+                    }
+                }
+
+                Label {
+
+                    text: qsTr(''+sliderTaxaCampoVazio.value)
+                    anchors.horizontalCenter: parent.horizontalCenter
+                }
+
+                Slider {
+
+                    id: sliderTaxaCampoVazio
+
+                    from: 0
+                    value: 0
+                    to: 100
+                    stepSize: 1
+
+                    anchors.horizontalCenter: parent.horizontalCenter
                 }
             }
         }

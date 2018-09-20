@@ -134,13 +134,19 @@ ApplicationWindow {
             height: parent.height
             anchors.centerIn: parent
 
-            PaginaHome{}
+            PaginaHome{
+
+                id:pagHome
+            }
         }
 
         // Página de Configurações.
         Page{
 
-            PaginaConfig{}
+            PaginaConfig{
+
+                instanciaCamera: pagHome.instanciaCamera
+            }
         }
 
         // Página dos Outros.
