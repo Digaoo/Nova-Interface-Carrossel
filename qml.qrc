@@ -10,7 +10,7 @@
         <file>home.png</file>
         <file>configuracoes.png</file>
         <file>ajuda.png</file>
-        <file>outros.png</file>
+        <file>calibracao.png</file>
     </qresource>
     <qresource prefix="/Templates"/>
 </RCC>

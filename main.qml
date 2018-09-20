@@ -43,6 +43,31 @@ ApplicationWindow {
             }
         }
 
+        // Calibração Botão
+        TabButton {
+
+            id: calibracaoBotao
+            anchors.verticalCenter: parent.verticalCenter
+
+            Image {
+
+                id: calibracaoImage
+                height: parent.height/1.5
+                anchors.rightMargin: 6
+                anchors.right: calibracaoText.left
+                fillMode: Image.PreserveAspectFit
+                anchors.verticalCenter: parent.verticalCenter
+                source: "Imagens/calibracao.png"
+            }
+
+            Text {
+                id: calibracaoText
+                text: qsTr("Calibração")
+                anchors.left: calibracaoImage.right
+                anchors.centerIn: parent
+            }
+        }
+
         // Botão Configurações
         TabButton {
 
@@ -64,31 +89,6 @@ ApplicationWindow {
                 id: configText
                 text: qsTr("Configurações")
                 anchors.left: configImage.right
-                anchors.centerIn: parent
-            }
-        }
-
-        // Outros Botão
-        TabButton {
-
-            id: outrosBotao
-            anchors.verticalCenter: parent.verticalCenter
-
-            Image {
-
-                id: outrosImage
-                height: parent.height/1.5
-                anchors.rightMargin: 6
-                anchors.right: outrosText.left
-                fillMode: Image.PreserveAspectFit
-                anchors.verticalCenter: parent.verticalCenter
-                source: "Imagens/outros.png"
-            }
-
-            Text {
-                id: outrosText
-                text: qsTr("Outros")
-                anchors.left: outrosImage.right
                 anchors.centerIn: parent
             }
         }
@@ -140,6 +140,11 @@ ApplicationWindow {
             }
         }
 
+        // Página de Calibração.
+        Page{
+
+        }
+
         // Página de Configurações.
         Page{
 
@@ -147,11 +152,6 @@ ApplicationWindow {
 
                 instanciaCamera: pagHome.instanciaCamera
             }
-        }
-
-        // Página dos Outros.
-        Page{
-
         }
 
         // Página de Ajuda.
