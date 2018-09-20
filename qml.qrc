@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+    </qresource>
+    <qresource prefix="/Arquivos">
+        <file>PaginaHome.qml</file>
+        <file>PaginaConfig.qml</file>
+    </qresource>
+    <qresource prefix="/Imagens">
+        <file>home.png</file>
+        <file>configuracoes.png</file>
+        <file>ajuda.png</file>
+        <file>outros.png</file>
+    </qresource>
+    <qresource prefix="/Templates">
+        <file>Camera.qml</file>
+    </qresource>
+</RCC>
