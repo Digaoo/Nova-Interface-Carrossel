@@ -13,7 +13,8 @@ GridLayout {
     rows: 3
     columns: 2
 
-    property var instanciaCamera: camera
+    property var instanciaFrame: camera.cvImage
+    property var instanciaVideo: video
 
     ComboBox {
 
@@ -74,6 +75,7 @@ GridLayout {
 
         VideoOutput {
 
+            id:video
             anchors.fill: parent
             source: camera;
         }

@@ -5,6 +5,7 @@
     <qresource prefix="/Arquivos">
         <file>PaginaHome.qml</file>
         <file>PaginaConfig.qml</file>
+        <file>PaginaCalib.qml</file>
     </qresource>
     <qresource prefix="/Imagens">
         <file>home.png</file>

@@ -10,8 +10,6 @@ ScrollView{
     id: layoutConfig
     anchors.fill: parent
 
-    property var instanciaCamera: null
-
     ColumnLayout {
 
         anchors.fill: parent

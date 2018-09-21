@@ -13,6 +13,8 @@ ApplicationWindow {
     minimumWidth: 800
     minimumHeight: 600
 
+    property var instancia: null
+
     header: TabBar {
 
         id: abas
@@ -143,15 +145,21 @@ ApplicationWindow {
         // Página de Calibração.
         Page{
 
+            width: parent.width
+            height: parent.height
+            anchors.centerIn: parent
+
+            PaginaCalib {
+
+                instanciaVideo: pagHome.instanciaVideo
+                instanciaFrame: pagHome.instanciaFrame
+            }
         }
 
         // Página de Configurações.
         Page{
 
-            PaginaConfig{
-
-                instanciaCamera: pagHome.instanciaCamera
-            }
+            PaginaConfig{}
         }
 
         // Página de Ajuda.
