@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
+import Cpp.Mensagens 1.0
 import "Arquivos"
 
 // Janela da aplicação.
@@ -151,8 +152,9 @@ ApplicationWindow {
 
             PaginaCalib {
 
+                id:pagCalib
+
                 instanciaVideo: pagHome.instanciaVideo
-                instanciaFrame: pagHome.instanciaFrame
             }
         }
 
@@ -176,6 +178,19 @@ ApplicationWindow {
                     color: "#2A2A2A"
                 }
             }
+        }
+    }
+
+    Mensagens {
+
+        id: msgs
+    }
+
+    onClosing: {
+
+        if (msgs.estaSalvando()) {
+
+            msgs.forcarSalvamento();
         }
     }
 }

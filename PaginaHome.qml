@@ -3,7 +3,7 @@ import QtQuick.Controls 1.4
 import QtQuick.Controls 2.3
 import QtQuick.Layouts 1.3
 import QtMultimedia 5.8
-import CVCamera 1.0
+import Cpp.Mensagens 1.0
 
 GridLayout {
 
@@ -13,21 +13,42 @@ GridLayout {
     rows: 3
     columns: 2
 
-    property var instanciaFrame: camera.cvImage
     property var instanciaVideo: video
+
+    property var listaIdCameras: []
+    property var listaNomeCameras: []
 
     ComboBox {
 
         id: escolheCamera
         currentIndex: 0
-        model: camera.deviceList
-        Layout.preferredWidth: telaJogo.width
+        model: null
 
+        Layout.preferredWidth: telaJogo.width
         Layout.maximumWidth: telaJogo.width
         Layout.maximumHeight: parent.height * 0.1
 
         Layout.alignment: Qt.AlignLeft | Qt.AlignTop
         Layout.margins: 5
+
+        Component.onCompleted: {
+
+            listaIdCameras.push(camera.deviceId);
+            listaNomeCameras.push(camera.displayName);
+
+            for(var i=0; i< QtMultimedia.availableCameras.length; i++) {
+
+                listaIdCameras.push(QtMultimedia.availableCameras[i].deviceId);
+                listaNomeCameras.push(QtMultimedia.availableCameras[i].displayName);
+            }
+
+            escolheCamera.model = listaNomeCameras;
+        }
+
+        onCurrentIndexChanged: {
+
+            camera.deviceId = listaIdCameras[escolheCamera.currentIndex];
+        }
     }
 
     Rectangle {
@@ -51,6 +72,16 @@ GridLayout {
             anchors.centerIn: parent
 
             text: qsTr("Guardar em Arquivo")
+
+            onClicked: {
+
+                msgs.ligaDeslSalvamento();
+            }
+        }
+
+        Mensagens {
+
+            id: msgs
         }
     }
 
@@ -66,18 +97,16 @@ GridLayout {
         anchors.top: escolheCamera.bottom
         anchors.margins: 5
 
-        CVCamera {
+        Camera {
 
-            id: camera
-            device: escolheCamera.currentIndex
-            size: "640x480"
+            id:camera
         }
 
         VideoOutput {
 
             id:video
             anchors.fill: parent
-            source: camera;
+            source: camera
         }
 
     }

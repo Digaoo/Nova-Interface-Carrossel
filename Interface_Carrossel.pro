@@ -14,10 +14,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 INCLUDEPATH += /usr/local/include/opencv
 
-LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui
+LIBS += -L/usr/local/lib -lopencv_core -lopencv_imgcodecs -lopencv_highgui -lopencv_imgproc
 
 SOURCES += \
-        main.cpp
+        main.cpp \
+    logger.cpp
 
 RESOURCES += qml.qrc
 
@@ -31,3 +32,6 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+HEADERS += \
+    logger.h
